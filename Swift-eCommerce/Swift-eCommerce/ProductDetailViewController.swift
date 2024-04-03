@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 class ProductDetailViewController: UIViewController{
     
     @IBOutlet weak var productImageView: UIImageView!
@@ -21,7 +22,11 @@ class ProductDetailViewController: UIViewController{
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var addToCartButton: UIButton!
     
+    @IBOutlet weak var QuantityLabel: UILabel!
+    
+    
     var product : Product?//Product from model
+    var quantity = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +45,23 @@ class ProductDetailViewController: UIViewController{
             productImageView.downloadImage(path: imagePath)
             //downloadImage  is function in HomeViewController file
         }
-        
+        QuantityLabel.text = "\(quantity)"
         
     }
     @IBAction func addtoCartButtonAction(_ sender: Any) {
+        
     }
     
+    @IBAction func QuantityStepperAction(_ sender: UIStepper) {
+        let stepperValue = sender.value
+        quantity = Int(stepperValue)
+        QuantityLabel.text = "\(quantity)"
+    }
+    func saveProduct(){
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
+            let description = NSEntityDescription.entity(forEntityName: "ProductEntity", in:appDelegate.persistentContainer.viewContext)
+            let entity = NSManagedObject(entity: description!, insertInto: appDelegate.persistentContainer.viewContext) as? ProductEntity
+            entity?.productID = Int16(product?.id ?? 0)
+        }
+    }
 }
