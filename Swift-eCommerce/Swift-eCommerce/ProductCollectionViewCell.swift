@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 class ProductCollectionViewCell:UICollectionViewCell{
+    var productData: Product?// Product from Modal
+    
     
     @IBOutlet weak var productImageView: UIImageView!
     

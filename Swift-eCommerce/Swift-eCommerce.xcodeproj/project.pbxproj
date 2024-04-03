@@ -17,6 +17,7 @@
 		18075D7D2BAB39C3008789D5 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18075D7C2BAB39C3008789D5 /* NetworkHelper.swift */; };
 		18075D7F2BAB3A81008789D5 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18075D7E2BAB3A81008789D5 /* ProductModel.swift */; };
 		18075D812BAC9015008789D5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18075D802BAC9015008789D5 /* HomeViewController.swift */; };
+		1888CFA82BB5C7620075D667 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888CFA72BB5C7620075D667 /* ProductDetailViewController.swift */; };
 		18E62D362BB3207200DAF5FC /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E62D352BB3207200DAF5FC /* ProductCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		18075D7C2BAB39C3008789D5 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		18075D7E2BAB3A81008789D5 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		18075D802BAC9015008789D5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1888CFA72BB5C7620075D667 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		18E62D352BB3207200DAF5FC /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 				18075D7E2BAB3A81008789D5 /* ProductModel.swift */,
 				18075D802BAC9015008789D5 /* HomeViewController.swift */,
 				18E62D352BB3207200DAF5FC /* ProductCollectionViewCell.swift */,
+				1888CFA72BB5C7620075D667 /* ProductDetailViewController.swift */,
 			);
 			path = "Swift-eCommerce";
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 			files = (
 				18075D702BAB392B008789D5 /* Swift_eCommerce.xcdatamodeld in Sources */,
 				18075D7F2BAB3A81008789D5 /* ProductModel.swift in Sources */,
+				1888CFA82BB5C7620075D667 /* ProductDetailViewController.swift in Sources */,
 				18E62D362BB3207200DAF5FC /* ProductCollectionViewCell.swift in Sources */,
 				18075D6A2BAB392B008789D5 /* ViewController.swift in Sources */,
 				18075D7D2BAB39C3008789D5 /* NetworkHelper.swift in Sources */,

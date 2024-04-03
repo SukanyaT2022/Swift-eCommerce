@@ -24,6 +24,6 @@ class  NetworkHelper{
                 }
             }
         }
-        task.resume()
+        task.resume()//for execute api
     }
 }
