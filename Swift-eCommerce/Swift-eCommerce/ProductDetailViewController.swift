@@ -60,8 +60,24 @@ class ProductDetailViewController: UIViewController{
     func saveProduct(){
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
             let description = NSEntityDescription.entity(forEntityName: "ProductEntity", in:appDelegate.persistentContainer.viewContext)
+            //entity name in coredata ProductEntity
+            //below we crate entity
             let entity = NSManagedObject(entity: description!, insertInto: appDelegate.persistentContainer.viewContext) as? ProductEntity
+//            entity?.coredata page
+            //product?.title - from model
+            //below loading data in entity
             entity?.productID = Int16(product?.id ?? 0)
+            entity?.productTitle = product?.title
+            entity?.productPrice = product?.price ?? 0
+            entity?.productDescription = product?.description
+            entity?.productCategory = product?.category
+            entity?.productImage = product?.image
+            entity?.productRating = product?.rating?.rate ?? 0
+            entity?.productQuantity = Int16(quantity)
+            //quantity is var ehen user add
+            //sae change
+            appDelegate.saveContext()
+            
         }
     }
 }
