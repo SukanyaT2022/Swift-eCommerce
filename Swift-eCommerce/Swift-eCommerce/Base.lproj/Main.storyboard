@@ -12,7 +12,7 @@
         <!--Cart-->
         <scene sceneID="GlZ-Sz-Ang">
             <objects>
-                <viewController id="IiI-yW-6a1" sceneMemberID="viewController">
+                <viewController id="IiI-yW-6a1" customClass="CartViewControllerCheckout" customModule="Swift_eCommerce" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uBT-W4-v2a">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cartProductCell" rowHeight="154" id="WKZ-Nz-zK4">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cartProductCell" rowHeight="154" id="WKZ-Nz-zK4" customClass="CartTableViewCell" customModule="Swift_eCommerce" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="154"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WKZ-Nz-zK4" id="XhC-wU-2RD">
@@ -94,8 +94,14 @@
                                                 <constraint firstItem="Nhs-6v-PZP" firstAttribute="centerY" secondItem="XhC-wU-2RD" secondAttribute="centerY" id="lzZ-uk-f2B"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="priceLabel" destination="Pj4-gB-xh6" id="hiv-kU-R9G"/>
+                                            <outlet property="productImageView" destination="ORf-fj-vfc" id="AKI-Lf-aj5"/>
+                                            <outlet property="productQuantityLabel" destination="Iwv-wJ-g2i" id="dhR-FH-tSN"/>
+                                            <outlet property="productTitleLabel" destination="Tpw-hz-P8U" id="DWV-O7-XvS"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cartPriceCell" rowHeight="154" id="nIN-DT-Bey">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cartPriceCell" rowHeight="154" id="nIN-DT-Bey" customClass="CartPriceTableViewCell" customModule="Swift_eCommerce" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="204" width="393" height="154"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nIN-DT-Bey" id="2lJ-2Z-4PU">
@@ -138,6 +144,10 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="ICI-uK-ti7" secondAttribute="trailing" constant="10" id="r1O-qd-VI2"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="qtyLabel" destination="zkj-CF-AgI" id="pag-Y1-VBv"/>
+                                            <outlet property="totalPriceLabel" destination="ICI-uK-ti7" id="jUn-fG-tKj"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -152,10 +162,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Cart" image="cart.fill" catalog="system" id="0bC-pP-mYF"/>
+                    <connections>
+                        <outlet property="cartTableView" destination="PWH-NT-kCX" id="Pee-Wk-aTM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8yb-z5-DCu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1194.6564885496182" y="190.84507042253523"/>
+            <point key="canvasLocation" x="1173" y="232"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="qOE-7R-jvr">

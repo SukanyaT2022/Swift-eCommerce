@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import UIKit
+class CartPriceTableViewCell: UITableViewCell{
+
+    @IBOutlet weak var qtyLabel: UILabel!
+    @IBOutlet weak var totalPriceLabel: UILabel!
+}
+
