@@ -49,7 +49,7 @@ class ProductDetailViewController: UIViewController{
         
     }
     @IBAction func addtoCartButtonAction(_ sender: Any) {
-        
+       saveProduct()
     }
     
     @IBAction func QuantityStepperAction(_ sender: UIStepper) {

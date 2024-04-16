@@ -16,4 +16,9 @@ class CartTableViewCell:UITableViewCell{
     
     @IBOutlet weak var priceLabel: UILabel!
     
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    @IBOutlet weak var quantityStepper: UIStepper!
+    
+    var cartProduct : ProductEntity?
 }
