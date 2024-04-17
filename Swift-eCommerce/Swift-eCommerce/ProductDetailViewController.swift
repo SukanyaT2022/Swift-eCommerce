@@ -59,6 +59,14 @@ class ProductDetailViewController: UIViewController{
     }
     func saveProduct(){
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
+            //update product quantity
+            let fetchRequest = ProductEntity.fetchRequest()
+            if  let existingProducts = (try? appDelegate.persistentContainer.viewContext.fetch(fetchRequest) as? [ProductEntity]),
+                let productToUpdate = existingProducts.filter({$0.productID == Int16(product?.id ?? 0)}).first{
+                productToUpdate.productQuantity = Int16(quantity)
+                appDelegate.saveContext()
+                return 
+            }
             let description = NSEntityDescription.entity(forEntityName: "ProductEntity", in:appDelegate.persistentContainer.viewContext)
             //entity name in coredata ProductEntity
             //below we crate entity

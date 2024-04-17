@@ -77,6 +77,11 @@ extension CartViewControllerCheckout: UITableViewDelegate, UITableViewDataSource
                 self.updateQuantity(product: product,value: Int(cell.quantityStepper.value))
                 cell.productQuantityLabel.text = "\(Int(cell.quantityStepper.value))"
             }), for: .valueChanged)
+            
+            //delete button
+            cell.deleteButton.addAction(UIAction(title:"", handler: { action in
+                self.deleteProduct(product: product)//left name od parameter / right is value var
+            }), for:.touchUpInside )
             if let imagePath = product?.productImage{
                 cell.productImageView.downloadImage(path: imagePath)
             }
@@ -93,10 +98,9 @@ extension CartViewControllerCheckout: UITableViewDelegate, UITableViewDataSource
             cell.qtyLabel.text = "\(totalQty)"
             cell.totalPriceLabel.text = "$ \(totalPrice)"
             return cell
-            
-            
         }
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 150
     }
@@ -108,5 +112,21 @@ extension CartViewControllerCheckout: UITableViewDelegate, UITableViewDataSource
         product?.productQuantity = Int16(value)
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
-    
+    func deleteProduct(product: ProductEntity?){
+        let alertController = UIAlertController(title: "Alert", message: "Do you want to delete?", preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .default) { action in
+         
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate,let product = product{
+                appDelegate.persistentContainer.viewContext.delete(product)
+                appDelegate.saveContext()
+                self.getCartProduct()
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true)
+        
+    }
 }
+
