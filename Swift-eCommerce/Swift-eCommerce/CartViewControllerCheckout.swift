@@ -77,11 +77,12 @@ extension CartViewControllerCheckout: UITableViewDelegate, UITableViewDataSource
                 self.updateQuantity(product: product,value: Int(cell.quantityStepper.value))
                 cell.productQuantityLabel.text = "\(Int(cell.quantityStepper.value))"
             }), for: .valueChanged)
-            
+            cell.cartProduct = product
+            cell.delegate = self
             //delete button
-            cell.deleteButton.addAction(UIAction(title:"", handler: { action in
-                self.deleteProduct(product: product)//left name od parameter / right is value var
-            }), for:.touchUpInside )
+//            cell.deleteButton.addAction(UIAction(title:"", handler: { action in
+//                self.deleteProduct(product: product)//left name od parameter / right is value var
+//            }), for:.touchUpInside )
             if let imagePath = product?.productImage{
                 cell.productImageView.downloadImage(path: imagePath)
             }
@@ -129,4 +130,10 @@ extension CartViewControllerCheckout: UITableViewDelegate, UITableViewDataSource
         
     }
 }
-
+extension CartViewControllerCheckout: CartTableViewCellDelegate{
+    func deleteButtonClick(product: ProductEntity?) {
+   deleteProduct(product: product)
+    }
+    
+    
+}
