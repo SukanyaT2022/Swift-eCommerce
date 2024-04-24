@@ -11,12 +11,19 @@ class HomeViewController:
     UIViewController{
     //after connect 4 tab of cell show below line
     @IBOutlet weak var ProductCollectionView: UICollectionView!
+    
+    @IBOutlet var productSearchBar: UISearchBar!
+    
     var productList : [Product]?
+    var filterProductList : [Product]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ProductCollectionView.delegate = self
         ProductCollectionView.dataSource = self
+    //search bar
+        self.navigationItem.titleView = productSearchBar
+        productSearchBar.delegate = self
         self.getProduct()
     }
 //    get all product detail from api
@@ -25,6 +32,7 @@ class HomeViewController:
             switch result{
             case .success(let data):
                 self.productList = data
+                self.filterProductList = data
                 self.refreshView()
             case .failure(let error):
                 print(error)
@@ -40,7 +48,7 @@ class HomeViewController:
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     //numberOfItemsInSection how many box of cell in total-ex i want 10 cells
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return productList?.count ?? 0
+        return filterProductList?.count ?? 0
     }
     //cellForItemAt create each cell in each index path--then create 10 cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -52,7 +60,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 //        array of productList
         
-        let product = productList?[indexPath.item]//indexpathline 46
+        let product = filterProductList?[indexPath.item]//indexpathline 46
         cell.productTitle.text = product?.title
         cell.productImageView.downloadImage(path: product?.image ?? "")
         cell.productData = product//product LINE 55
@@ -87,5 +95,23 @@ extension UIImageView{
         }.resume()
         
         
+    }
+}
+//for search box and filter
+extension HomeViewController: UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+      //do filter for search
+        filterAndRefresh(text: searchText)//searchtext first from 103
+    }
+    func filterAndRefresh(text: String){
+//        text isempyty mean not searching- when no text on search bar-show all product
+        if text.isEmpty{
+            filterProductList = productList
+        }else{
+            //if user type something show what search for
+            filterProductList = productList?.filter({$0.title!.contains(text)})
+        }
+      
+        ProductCollectionView.reloadData()
     }
 }

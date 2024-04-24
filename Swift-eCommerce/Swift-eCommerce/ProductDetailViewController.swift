@@ -17,7 +17,8 @@ class ProductDetailViewController: UIViewController{
     
     @IBOutlet weak var priceLabel: UILabel!
     
-    @IBOutlet weak var descriptionLabel: UILabel!
+
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var addToCartButton: UIButton!
@@ -38,7 +39,7 @@ class ProductDetailViewController: UIViewController{
         ratingLabel.text = "\(product?.rating?.rate ?? 0)" //rating?.rate from model
         //"/()" above convert to string format
         priceLabel.text = "$\(product?.price ?? 0)"
-        descriptionLabel.text = product?.description
+       descriptionTextView.text = product?.description
         
         categoryLabel.text = product?.category
         if let imagePath = product?.image{
@@ -65,7 +66,9 @@ class ProductDetailViewController: UIViewController{
                 let productToUpdate = existingProducts.filter({$0.productID == Int16(product?.id ?? 0)}).first{
                 productToUpdate.productQuantity = Int16(quantity)
                 appDelegate.saveContext()
-                return 
+//                this line make the the cart go back to the first screen
+                self.navigationController?.popViewController(animated: true)
+                return
             }
             let description = NSEntityDescription.entity(forEntityName: "ProductEntity", in:appDelegate.persistentContainer.viewContext)
             //entity name in coredata ProductEntity
@@ -85,7 +88,7 @@ class ProductDetailViewController: UIViewController{
             //quantity is var ehen user add
             //sae change
             appDelegate.saveContext()
-            
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }
