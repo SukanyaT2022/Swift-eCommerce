@@ -14,8 +14,14 @@ class HomeViewController:
     
     @IBOutlet var productSearchBar: UISearchBar!
     
+    @IBOutlet weak var categoryCollectionView: UICollectionView!
+    
+    
     var productList : [Product]?
     var filterProductList : [Product]?
+    var categoryList = ["All"]
+    //: define type |  = assign
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +31,26 @@ class HomeViewController:
         self.navigationItem.titleView = productSearchBar
         productSearchBar.delegate = self
         self.getProduct()
+        getCategories()
     }
+    //get all catergory on catergory cell on home page -- this function do is get data from api
+    func getCategories(){
+        //below for catergory section on homepage
+        NetworkHelper().getCategories { result in
+            switch result{
+            case .success(let data):
+                if let data{
+                    self.categoryList.append(contentsOf: data)
+                    DispatchQueue.main.async {
+                        self.categoryCollectionView.reloadData()
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
 //    get all product detail from api
     func getProduct(){
         NetworkHelper().getAllProducts { result in

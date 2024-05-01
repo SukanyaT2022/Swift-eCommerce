@@ -205,7 +205,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DFA-dt-9P7">
-                                <rect key="frame" x="0.0" y="113" width="393" height="656"/>
+                                <rect key="frame" x="0.0" y="153" width="393" height="616"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dlj-Er-H8H">
                                     <size key="itemSize" width="169" height="168"/>
@@ -253,12 +253,53 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uhH-os-mGW">
+                                <rect key="frame" x="0.0" y="103" width="393" height="45"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <color key="tintColor" systemColor="groupTableViewBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="H9c-b9-9gp">
+                                    <size key="itemSize" width="107" height="101"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="catergoryCollectionViewCell" id="99y-TB-DnU" customClass="CategoryCollectionViewCell" customModule="Swift_eCommerce" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="107" height="101"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="puS-Bf-YJ9">
+                                            <rect key="frame" x="0.0" y="0.0" width="107" height="101"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MoQ-yM-pE7">
+                                                    <rect key="frame" x="32.666666666666664" y="40" width="41.999999999999993" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="MoQ-yM-pE7" firstAttribute="centerX" secondItem="puS-Bf-YJ9" secondAttribute="centerX" id="1Ne-xr-xS0"/>
+                                                <constraint firstItem="MoQ-yM-pE7" firstAttribute="centerY" secondItem="puS-Bf-YJ9" secondAttribute="centerY" id="cfV-OR-dKK"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="107" height="101"/>
+                                        <connections>
+                                            <outlet property="catergoryLabel" destination="MoQ-yM-pE7" id="HyI-Mo-EOo"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hil-li-u6n"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="hil-li-u6n" firstAttribute="trailing" secondItem="uhH-os-mGW" secondAttribute="trailing" id="ARa-1f-Thj"/>
+                            <constraint firstItem="uhH-os-mGW" firstAttribute="leading" secondItem="hil-li-u6n" secondAttribute="leading" id="CfC-cp-bAk"/>
+                            <constraint firstItem="uhH-os-mGW" firstAttribute="top" secondItem="hil-li-u6n" secondAttribute="top" id="NIu-ax-RCt"/>
+                            <constraint firstItem="DFA-dt-9P7" firstAttribute="top" secondItem="uhH-os-mGW" secondAttribute="bottom" constant="5" id="PpE-Ib-TbE"/>
                             <constraint firstItem="hil-li-u6n" firstAttribute="trailing" secondItem="DFA-dt-9P7" secondAttribute="trailing" id="QPx-AX-TlK"/>
-                            <constraint firstItem="DFA-dt-9P7" firstAttribute="top" secondItem="hil-li-u6n" secondAttribute="top" constant="10" id="cLE-r8-Ncd"/>
+                            <constraint firstItem="DFA-dt-9P7" firstAttribute="top" secondItem="hil-li-u6n" secondAttribute="top" constant="50" id="cLE-r8-Ncd"/>
                             <constraint firstItem="DFA-dt-9P7" firstAttribute="leading" secondItem="hil-li-u6n" secondAttribute="leading" id="dmO-XB-DOt"/>
                             <constraint firstItem="hil-li-u6n" firstAttribute="bottom" secondItem="DFA-dt-9P7" secondAttribute="bottom" id="xac-Q1-sBg"/>
                         </constraints>
@@ -266,6 +307,7 @@
                     <navigationItem key="navigationItem" id="3vm-0Y-x57"/>
                     <connections>
                         <outlet property="ProductCollectionView" destination="DFA-dt-9P7" id="08j-7w-DB2"/>
+                        <outlet property="categoryCollectionView" destination="uhH-os-mGW" id="XIV-Nm-7zB"/>
                         <outlet property="productSearchBar" destination="yOe-hs-geh" id="Hx0-rT-0t1"/>
                         <segue destination="sz8-Ys-9hI" kind="show" identifier="connectDetailProduct" id="hHn-qa-sEO"/>
                     </connections>
@@ -483,6 +525,9 @@
         <image name="cart.fill" catalog="system" width="128" height="102"/>
         <image name="homekit" catalog="system" width="128" height="104"/>
         <image name="trash.fill" catalog="system" width="117" height="128"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -491,6 +536,9 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
