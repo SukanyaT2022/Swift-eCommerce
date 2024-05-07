@@ -27,6 +27,8 @@ class HomeViewController:
         super.viewDidLoad()
         ProductCollectionView.delegate = self
         ProductCollectionView.dataSource = self
+        categoryCollectionView.delegate = self
+        categoryCollectionView.dataSource = self
     //search bar
         self.navigationItem.titleView = productSearchBar
         productSearchBar.delegate = self
@@ -73,27 +75,50 @@ class HomeViewController:
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     //numberOfItemsInSection how many box of cell in total-ex i want 10 cells
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filterProductList?.count ?? 0
+        if collectionView == categoryCollectionView{
+            return categoryList.count
+        }else{
+            return filterProductList?.count ?? 0
+        }
+      
     }
     //cellForItemAt create each cell in each index path--then create 10 cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as? ProductCollectionViewCell
-                //ProductCollectionViewCell is class name
-        else{
-            return UICollectionViewCell()
+        if collectionView == categoryCollectionView{
+            guard let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: "catergoryCollectionViewCell", for: indexPath) as? CategoryCollectionViewCell else{
+                return UICollectionViewCell()
+            }
+            let category = categoryList[indexPath.item]
+            cell.catergoryLabel.text = category
+            return cell
+        }else{
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as? ProductCollectionViewCell
+                    //ProductCollectionViewCell is class name
+            else{
+                return UICollectionViewCell()
+            }
+            
+            //        array of productList
+            
+            let product = filterProductList?[indexPath.item]//indexpathline 46
+            cell.productTitle.text = product?.title
+            cell.productImageView.downloadImage(path: product?.image ?? "")
+            cell.productData = product//product LINE 55
+            return cell
         }
-
-//        array of productList
-        
-        let product = filterProductList?[indexPath.item]//indexpathline 46
-        cell.productTitle.text = product?.title
-        cell.productImageView.downloadImage(path: product?.image ?? "")
-        cell.productData = product//product LINE 55
-        return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      return CGSize(width: 180, height: 160)
+     
+        if collectionView == categoryCollectionView{
+            let category = categoryList[indexPath.item]
+            let size = (category as NSString).size()
+            return CGSize(width: size.width + 40, height: 50)
+        }else{
+            return CGSize(width: 180, height: 160)
+        }
     }
+    
     //identify which item is selected
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell

@@ -66,36 +66,6 @@
             endingLineNumber = "120"
             landmarkName = "deleteProduct(product:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8E81115A-4AE6-47DE-A6CC-848F232E0FF4 - 29d72bba88c9b8f4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Swift_eCommerce.CartViewControllerCheckout.deleteProduct(product: Swift.Optional&lt;Swift_eCommerce.ProductEntity&gt;) -&gt; ()"
-                  moduleName = "Swift-eCommerce"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tiparpron/Desktop/swiftProject/Swift-eCommerce/Swift-eCommerce/Swift-eCommerce/CartViewControllerCheckout.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "120"
-                  endingLineNumber = "120">
-               </Location>
-               <Location
-                  uuid = "8E81115A-4AE6-47DE-A6CC-848F232E0FF4 - 29d72bba88c9b8f4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Swift_eCommerce.CartViewControllerCheckout.deleteProduct(product: Swift.Optional&lt;Swift_eCommerce.ProductEntity&gt;) -&gt; ()"
-                  moduleName = "Swift-eCommerce"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tiparpron/Desktop/swiftProject/Swift-eCommerce/Swift-eCommerce/Swift-eCommerce/CartViewControllerCheckout.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "120"
-                  endingLineNumber = "120">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -134,7 +104,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "98AED177-DBC2-4CE3-AA4D-87309EB7C62B"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Swift-eCommerce/NetworkHelper.swift"
@@ -143,6 +113,38 @@
             startingLineNumber = "44"
             endingLineNumber = "44"
             landmarkName = "getCategories(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4D84DB00-EF7A-46BB-BD1C-62920D092C02"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Swift-eCommerce/NetworkHelper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "getCategories(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4D0A25F7-ABC1-48A5-A175-AF4CF497BACE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Swift-eCommerce/HomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "collectionView(_:layout:sizeForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
