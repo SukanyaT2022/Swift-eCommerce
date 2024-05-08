@@ -19,7 +19,7 @@ class HomeViewController:
     
     var productList : [Product]?
     var filterProductList : [Product]?
-    var categoryList = ["All"]
+    var categoryList = ["All"]//ALL from the screen on the navbar
     //: define type |  = assign
     
     
@@ -121,10 +121,25 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     //identify which item is selected
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell
-        //for navigation perform seque
-        performSegue(withIdentifier:"connectDetailProduct" , sender: cell?.productData)
-        //productData from variable productCollectionViewcell file
+        //if condition when we click on category on the navbar
+        if collectionView == categoryCollectionView{
+            let category = categoryList[indexPath.item]
+            //option to usse filter to get catergory product ex jewelry section
+            //on nav bar if click all --display all products-ALL from line 22
+            if category == "All"{
+                filterProductList = productList
+            }else{
+                filterProductList = productList?.filter({$0.category == category})
+            }
+            self.ProductCollectionView.reloadData()
+        }else{
+            //else when we click on products
+            let cell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell
+            //for navigation perform seque
+            performSegue(withIdentifier:"connectDetailProduct" , sender: cell?.productData)
+            //productData from variable productCollectionViewcell file
+        }
+       
     }
    //below for pass the data to next page
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -147,7 +162,7 @@ extension UIImageView{
         
     }
 }
-//for search box and filter
+//for search box and filter what ever user type go to line 167 and use filter to search
 extension HomeViewController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
       //do filter for search

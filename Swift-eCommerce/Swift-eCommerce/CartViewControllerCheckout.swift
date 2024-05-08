@@ -41,7 +41,7 @@ class CartViewControllerCheckout:  UIViewController{
             for product in cartProduct{
                 let qty = product.productQuantity
                 totalQty += Int(qty) //add qty to totalQty
-                totalPrice += product.productPrice
+                totalPrice += product.productPrice * Double(qty)
                 
             }
         }
@@ -108,6 +108,8 @@ extension CartViewControllerCheckout: UITableViewDelegate, UITableViewDataSource
     func updateQuantity(product : ProductEntity?, value : Int){
         totalQty -= Int(product?.productQuantity ?? 1)
         totalQty += value
+        totalPrice -= Double(product!.productQuantity) * Double(product?.productPrice ?? 0)
+        totalPrice += (product?.productPrice ?? 0) * Double(value)
         //below is refresh or reload of the last row
         cartTableView.reloadRows(at: [IndexPath(row: cartProduct?.count ?? 0, section: 0)], with: .automatic)
         product?.productQuantity = Int16(value)
